@@ -3,7 +3,7 @@
 ## Authentication
 
 ### Pakages used 
-Django
-Django-allauth
-Django-crispy-forms
+Django,
+Django-allauth,
+Django-crispy-forms,
 
