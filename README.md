@@ -1,2 +1,9 @@
-# Simply-Social
-The blogging site practicals
+# BookBugs
+
+## Authentication
+
+### Pakages used 
+Django
+Django-allauth
+Django-crispy-forms
+
