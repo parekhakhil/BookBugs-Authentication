@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block head_title %}{% endblock %} | blogghar</title>
+    <!-- Compiled and minified CSS -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {# block to easily inject any content in head #}
+    {% block extra_head %}
+    {% endblock %}
+    <style type="text/css">
+      .btn{
+        border-radius: 7px;
+      }
+      form{
+        border-radius: 15px;
+      }
+      </style>
+  </head>
+  <body>
+    <header>
+    {# include navbar #}
+    {% include "_navbar.html" %}
+    </header>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    {% if user.is_authenticated %}
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a class="btn-floating btn-large white">
+          <i class="large material-icons black-text">add</i>
+        </a>
+        <ul>
+          <li><a href="#" class="btn-floating red tooltipped" data-position="left"
+                data-delay="50" data-tooltip="Update blog info">
+                <i class="material-icons">info</i></a></li>
+          <li><a href="#" class="btn-floating purpule tooltipped" data-position="left"
+                data-delay="50" data-tooltip="View blog comments">
+            <i class="material-icons">comment</i></a></li>
+          <li><a href="#" class="btn-floating green tooltipped" data-position="left"
+                data-delay="50" data-tooltip="All blogposts">
+                <i class="material-icons">library_books</i></a></li>
+          <li><a href="" class="btn-floating blue tooltipped" data-position="left"
+            data-delay="50" data-tooltip="Write a post">
+            <i class="material-icons">mode_edit</i></a></li>
+        </ul>
+      </div>
+    {% endif %}
+
+    {# include footer #}
+    {% include "_footer.html" %}
+    <!-- start javascript inclusions -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script type="text/javascript" src="{% static 'css/csrf.js' %}"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".dropdown-button").dropdown();
+      });
+    </script>
+
+    <!-- alerts -->
+    {% if messages %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                {% for message in messages %}
+                    Materialize.toast('{{ message }}', 5000, '{{ message.tags }}');
+                {% endfor %}
+            });
+        </script>
+    {% endif %}
+    <!-- end alerts -->
+
+    {# block to easily inject any javascript content #}
+    {% block extra_scripts %}
+    {% endblock %}
+    <!-- end javascript inclusions -->
+  </body>
+</html>

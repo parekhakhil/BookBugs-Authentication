@@ -1,0 +1,42 @@
+{% load static %}
+<div class="navbar-fixed">
+  <nav role="navigation" class="grey accent-2 darken-4">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo"><img src="{% static 'images/nav-logo.png' %}" alt="Blogghar" style="height:60px;width: 150;"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        {% if user.is_authenticated %}
+          <li>
+            <a href="{% url 'authapp:user_profile' %}" class="dropdown-button"
+              data-activates="user-dropdown" data-beloworigin="true" data-constrainwidth="false">
+              <span>Welcome {{user.username}}</span> 
+              <!--<img {% if user.profile.avatar %}
+              src="{{ user.profile.avatar.url }}"
+              {% else %}
+              src="{% static 'images/user-profile-default.jpg' %}"
+              {% endif %}class="profile-image right" style="width:40px;height: 40px;border-radius: 50%;" alt="">
+          -->
+            </a>
+              <!-- user dropdown -->
+              <ul id="user-dropdown" class="dropdown-content">
+                <li>
+                  <a href="{% url 'authapp:user_profile' %}">View profile</a>
+                </li>
+                <li>
+                  <a href="{% url 'account_change_password' %}">Change pasword</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="{% url 'account_logout' %}">Log out</a>
+                </li>
+              </ul>
+          </li>
+        {% else %}
+          <li><a href="{% url 'account_login' %}">Login</a></li>
+          <li><a href="{% url 'account_signup' %}" class="btn white black-text waves-effect default">Sign Up</a></li>
+        {% endif %}
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+  </nav>
+</div>

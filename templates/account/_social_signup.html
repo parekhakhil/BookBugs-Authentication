@@ -1,0 +1,6 @@
+{% load socialaccount %}
+<div class=" col m5 offset-s6 shadow-box-off hoverable center" style="margin-left: 30px;border-radius: 15px;margin-top: 150px;">
+                    
+    <a href="{% provider_login_url "google" method="oauth2" %}"  class="waves-effect default red white-text btn btn-large center" style="border-radius: 7px;margin-top: 30px;margin-bottom: 30px;">SignIn using Google</a></li>
+    <a href="{% provider_login_url "facebook" method="oauth2" %}"  class="waves-effect default blue white-text btn btn-large center" style="border-radius: 7px;margin-bottom: 30px;">SignIn using Facebook</a></li>
+</div>

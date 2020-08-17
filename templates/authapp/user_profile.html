@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head_title %}{{ profile.user.username }}'s profile{% endblock %}
+{% block content %}
+
+  {% include "authapp/_user_profile_header.html" %}
+
+<div id="profile-page-about" class="center flow-text">
+  <!-- start Profile About  -->
+  <div class="card" style="border-radius: 7px;">
+    <div class="card-content">
+      <span class="card-title">About @{{ profile.user.username }}</span>
+      {% if profile.about %}
+        <p class="grey-text">{{ profile.about }}</p>
+      {% else %}
+      <p class="grey-text">Apparently, this user prefers to keep an air of mystery about them</p>
+      {% endif %}
+    </div>
+  </div>
+  <!-- end Profile About  -->
+</div>
+
+  
+  
+  
+{% endblock %}
